@@ -7,7 +7,7 @@ class App extends Component {
   state = {
     foodList: foods,
     showForm: false,
-    foodName: '',
+    name: '',
     calories: 0,
     image: '',
   };
@@ -44,7 +44,7 @@ class App extends Component {
   addFood = (event) => {
     event.preventDefault();
     let newFoodObj = {
-      name: this.state.foodName,
+      name: this.state.name,
       calories: this.state.calories,
       image: this.state.image,
       quantity: 0,
