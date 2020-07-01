@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
-import foods from './foods.json';
-import FoodBox from './components/Foodbox';
+import React, { Component } from 'react';// importing the react compnent to this page  
+import './App.css';// importing the App.css data to App.js
+import foods from './foods.json';// adding food.json to App.js
+import FoodBox from './components/Foodbox'; // adding Foodbox to App.js
 
-class App extends Component {
+class App extends Component {//adding an extention to the class app thats a state (property values)
   state = {
     foodList: foods,
     showForm: false,
@@ -12,75 +12,56 @@ class App extends Component {
     image: '',
   };
 
-  displayFood = () => {
+  displayFood = () => {// creating an array and added a return foodbox with the name calories and image of the food
     let arr = this.state.foodList.map((food) => {
-      return (
-        <FoodBox
-          key={food.name}
-          name={food.name}
-          calories={food.calories}
-          image={food.image}
-        />
-      );
+     
+     return <FoodBox name= {food.name}
+     calories= {food.calories}
+     image = {food.image}
+     />
     });
     return arr;
   };
 
-  toggleForm = () => {
-    // if (this.state.showForm === false) {
-    //   this.setState({
-    //     showForm: true,
-    //   });
-    // } else if (this.state.showForm === true) {
-    //   this.setState({
-    //     showForm: false,
-    //   });
-    // }
+  toggleForm = () => {// switches from first function to the second one. 
+   
     this.setState({
       showForm: !this.state.showForm,
+      animal: "dog"
     });
   };
 
-  addFood = (event) => {
+  addFood = (event) => {//if an event happeneds then let newfoodjob run which is the name calories image and quantity of the chosen word(food)
     event.preventDefault();
     let newFoodObj = {
-      name: this.state.name,
+      name: this.state.name,//turkey
       calories: this.state.calories,
       image: this.state.image,
       quantity: 0,
     };
-
-    let foodListCopy = [...this.state.foodList];
-    foodListCopy.unshift(newFoodObj);
+console.log(newFoodObj)
+    let foodListCopy = [...this.state.foodList];//all previous food like pizza and hot dogs 
+    foodListCopy.unshift(newFoodObj);//add turkey to previous food 
 
     this.setState({
-      foodList: foodListCopy,
+      foodList: foodListCopy,//switch old list with new list 
       showForm: false,
     });
   };
 
-  handleChange = (event) => {
+  handleChange = (event) => {//when an event happends or a change it changes the state by setState 
     console.log(event.target.name);
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
-  // handleChange2 = (event) => {
-  //   console.log(event.target.value);
-  //   this.setState({
-  //     calories: event.target.value,
-  //   });
-  // };
-  // handleChange3 = (event) => {
-  //   console.log(event.target.value);
-  //   this.setState({
-  //     image: event.target.value,
-  //   });
-  // };
+  
 
   render() {
+    
     return (
       <div className="App">
+        
         <button onClick={this.toggleForm}>Add Food</button>
         {this.state.showForm ? (
           <form onSubmit={this.addFood}>
@@ -103,13 +84,4 @@ class App extends Component {
     );
   }
 }
-
-// create a state for the array and boolean
-// create button
-// when you press a form shows
-
-// create the new food object
-// push it to the array
-// setstate
-
 export default App;

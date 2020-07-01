@@ -12,7 +12,7 @@ const FoodBox = (props) => {
         <div className="media-content">
           <div className="content">
             <p>
-              <strong>{props.name}</strong> <br />
+              <strong>{props.name}!</strong> <br />
               <small>{props.calories} cal</small>
             </p>
           </div>
